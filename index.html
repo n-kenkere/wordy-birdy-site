@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Wordy Birdy — A fun spelling adventure for little learners ages 3–7. Learn to spell offline, no ads, no data collected." />
+  <title>Wordy Birdy — Spelling for Little Learners</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:      #BFE3F5;
+      --blue-dark: #5BB8E8;
+      --orange:    #FF6B35;
+      --orange-lt: #FF8F60;
+      --white:     #FFFFFF;
+      --ink:       #1A1A2E;
+      --muted:     #5A6A7A;
+      --radius:    18px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: #F5FBFF;
+      color: var(--ink);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 2px solid var(--blue);
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo .bird-icon {
+      font-size: 1.8rem;
+      line-height: 1;
+    }
+
+    .nav-logo span {
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: var(--orange);
+      letter-spacing: -0.5px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--orange); }
+
+    .nav-links .btn-nav {
+      background: var(--orange);
+      color: var(--white);
+      padding: 0.45rem 1.1rem;
+      border-radius: 50px;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .nav-links .btn-nav:hover {
+      background: var(--orange-lt);
+      transform: translateY(-1px);
+      color: var(--white);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(160deg, var(--blue) 0%, #E8F6FD 60%, #F5FBFF 100%);
+      padding: 5rem 1.5rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(255,107,53,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 90% 80%, rgba(91,184,232,0.15) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--orange);
+      color: var(--white);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 0.35rem 1rem;
+      border-radius: 50px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-bird {
+      font-size: clamp(5rem, 15vw, 9rem);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      display: block;
+      animation: bob 3s ease-in-out infinite;
+    }
+
+    @keyframes bob {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-12px); }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 7vw, 4.2rem);
+      font-weight: 900;
+      color: var(--ink);
+      line-height: 1.1;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero h1 span { color: var(--orange); }
+
+    .hero p.tagline {
+      font-size: clamp(1.05rem, 3vw, 1.35rem);
+      font-weight: 600;
+      color: var(--muted);
+      max-width: 500px;
+      margin: 0 auto 2rem;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--orange);
+      color: var(--white);
+      font-family: 'Nunito', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      padding: 0.9rem 2.2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 6px 24px rgba(255,107,53,0.35);
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+
+    .hero-cta:hover {
+      background: var(--orange-lt);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 32px rgba(255,107,53,0.4);
+    }
+
+    .hero-note {
+      margin-top: 1rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    /* ── SECTION SHELL ── */
+    section { padding: 4.5rem 1.5rem; }
+
+    .section-inner {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.6rem;
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .subtitle {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 600px;
+      margin-bottom: 3rem;
+    }
+
+    /* ── ABOUT / AGE STRIP ── */
+    .age-strip {
+      background: var(--white);
+      border: 2px solid var(--blue);
+      border-radius: var(--radius);
+      padding: 1.4rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .age-strip .big-num {
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: var(--orange);
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .age-strip p {
+      font-weight: 600;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    /* ── FEATURES GRID ── */
+    #features { background: var(--white); }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .feature-card {
+      background: #F5FBFF;
+      border: 2px solid var(--blue);
+      border-radius: var(--radius);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 32px rgba(191,227,245,0.6);
+    }
+
+    .feature-card .icon {
+      font-size: 2.6rem;
+      margin-bottom: 0.9rem;
+      display: block;
+    }
+
+    .feature-card h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin-bottom: 0.4rem;
+      color: var(--ink);
+    }
+
+    .feature-card p {
+      font-size: 0.92rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ── MODES ── */
+    #modes { background: #F5FBFF; }
+
+    .modes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .mode-card {
+      border-radius: var(--radius);
+      padding: 2.2rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mode-card.discover {
+      background: linear-gradient(135deg, var(--blue) 0%, #D9EEFA 100%);
+      border: 2px solid var(--blue-dark);
+    }
+
+    .mode-card.learn {
+      background: linear-gradient(135deg, #FFE8DF 0%, #FFF0E8 100%);
+      border: 2px solid #FFB89A;
+    }
+
+    .mode-card .mode-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .mode-card h3 {
+      font-size: 1.5rem;
+      font-weight: 900;
+      margin-bottom: 0.5rem;
+    }
+
+    .mode-card.discover h3 { color: #1A6FA0; }
+    .mode-card.learn   h3 { color: var(--orange); }
+
+    .mode-card p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .mode-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 0.3rem 0.8rem;
+      border-radius: 50px;
+      margin-top: 1rem;
+    }
+
+    .mode-card.discover .mode-tag { background: var(--blue-dark); color: var(--white); }
+    .mode-card.learn    .mode-tag { background: var(--orange);    color: var(--white); }
+
+    /* ── TRUST / SAFETY ── */
+    #trust { background: var(--white); }
+
+    .trust-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .trust-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.9rem;
+      background: #F5FBFF;
+      border: 2px solid var(--blue);
+      border-radius: var(--radius);
+      padding: 1.2rem 1.4rem;
+    }
+
+    .trust-list .tick {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .trust-list strong { display: block; font-weight: 800; font-size: 0.95rem; margin-bottom: 0.2rem; }
+    .trust-list span   { font-size: 0.88rem; color: var(--muted); }
+
+    /* ── CTA BANNER ── */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--orange) 0%, #FF8F60 100%);
+      border-radius: 24px;
+      padding: 3.5rem 2rem;
+      text-align: center;
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-banner::before {
+      content: '🐦';
+      position: absolute;
+      font-size: 8rem;
+      opacity: 0.08;
+      right: -1rem;
+      bottom: -2rem;
+      pointer-events: none;
+    }
+
+    .cta-banner h2 {
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+
+    .cta-banner p {
+      font-size: 1.05rem;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+    }
+
+    .btn-white {
+      display: inline-block;
+      background: var(--white);
+      color: var(--orange);
+      font-family: 'Nunito', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 800;
+      padding: 0.85rem 2.2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-white:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-size: 0.88rem;
+    }
+
+    footer a {
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    footer a:hover { color: var(--orange); }
+
+    footer .footer-logo {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--white);
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+
+    footer .footer-logo span { color: var(--orange); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      nav { padding: 0 1rem; }
+      .nav-links { gap: 0.8rem; }
+      .nav-links a:not(.btn-nav) { display: none; }
+      section { padding: 3rem 1rem; }
+      .hero { padding: 3.5rem 1rem 3rem; }
+      .age-strip { padding: 1rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#">
+      <span class="bird-icon">🐦</span>
+      <span>Wordy Birdy</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#modes">Modes</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+      <li><a class="btn-nav" href="#download">Download</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-badge">✨ For Ages 3–7</div>
+    <span class="hero-bird" role="img" aria-label="Wordy Birdy mascot">🐤</span>
+    <h1>Meet <span>Wordy&nbsp;Birdy!</span></h1>
+    <p class="tagline">A fun spelling adventure for little learners</p>
+    <a class="hero-cta" href="#download">
+      🎉 Get the App — It's Free!
+    </a>
+    <p class="hero-note">No ads &nbsp;·&nbsp; No data collected &nbsp;·&nbsp; Works offline</p>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <p class="section-label">Who it's for</p>
+      <h2>Built for the very youngest readers</h2>
+      <p class="subtitle">
+        Wordy Birdy grows with your child — from first letters all the way to full words —
+        using gentle sounds, bright pictures, and a cheerful bird guide every step of the way.
+      </p>
+      <div class="age-strip">
+        <div class="big-num">3–7</div>
+        <p>Designed for early learners just starting their reading and spelling journey. No reading required to play — Wordy Birdy narrates everything out loud.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features">
+    <div class="section-inner">
+      <p class="section-label">What's inside</p>
+      <h2>Everything little learners love</h2>
+      <p class="subtitle">Simple, joyful, and built with parents in mind.</p>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <span class="icon">🔤</span>
+          <h3>Letter Sounds</h3>
+          <p>Tap any letter to hear how it sounds. Every letter has its own cheerful animation.</p>
+        </div>
+        <div class="feature-card">
+          <span class="icon">🖼️</span>
+          <h3>Picture Words</h3>
+          <p>Colourful illustrations link words to meaning — helping kids learn by looking.</p>
+        </div>
+        <div class="feature-card">
+          <span class="icon">🔊</span>
+          <h3>Voice Narration</h3>
+          <p>Every word, hint, and instruction is spoken aloud so no reading is required.</p>
+        </div>
+        <div class="feature-card">
+          <span class="icon">📶</span>
+          <h3>Offline Play</h3>
+          <p>Once downloaded, the whole app works without any internet connection.</p>
+        </div>
+        <div class="feature-card">
+          <span class="icon">🚫</span>
+          <h3>Zero Ads</h3>
+          <p>No advertisements, no pop-ups, no distractions. Just pure learning fun.</p>
+        </div>
+        <div class="feature-card">
+          <span class="icon">🔒</span>
+          <h3>Private by Design</h3>
+          <p>We collect no personal data whatsoever — not even an email address.</p>
+        </div>
+        <div class="feature-card">
+          <span class="icon">⭐</span>
+          <h3>Stars &amp; Rewards</h3>
+          <p>Earn stars for each word spelled correctly and unlock fun bird stickers.</p>
+        </div>
+        <div class="feature-card">
+          <span class="icon">🎨</span>
+          <h3>Cute Characters</h3>
+          <p>Meet Wordy Birdy and friends — each word category has its own animal pal.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODES -->
+  <section id="modes">
+    <div class="section-inner">
+      <p class="section-label">Game modes</p>
+      <h2>Two ways to learn, endless fun</h2>
+      <p class="subtitle">Both modes are fully narrated so children can play independently.</p>
+
+      <div class="modes-grid">
+        <div class="mode-card discover">
+          <span class="mode-icon">🔍</span>
+          <h3>Discover Mode</h3>
+          <p>
+            Explore a world of pictures and words at your own pace. Tap any image to hear
+            its name spelled out letter by letter. Great for beginners just getting curious
+            about words.
+          </p>
+          <span class="mode-tag">Explore freely</span>
+        </div>
+
+        <div class="mode-card learn">
+          <span class="mode-icon">✏️</span>
+          <h3>Learn Mode</h3>
+          <p>
+            Wordy Birdy says a word out loud and your child drags the letters into the right
+            order. Gentle hints and cheerful celebrations keep kids motivated even when
+            they make a mistake.
+          </p>
+          <span class="mode-tag">Guided spelling</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section id="trust">
+    <div class="section-inner">
+      <p class="section-label">Parent peace of mind</p>
+      <h2>Safe, simple, and honest</h2>
+      <p class="subtitle">
+        We built Wordy Birdy the way we'd want an app built for our own children.
+      </p>
+
+      <ul class="trust-list">
+        <li>
+          <span class="tick">🚫</span>
+          <div>
+            <strong>No Ads — Ever</strong>
+            <span>No banner ads, video ads, or sponsored content of any kind.</span>
+          </div>
+        </li>
+        <li>
+          <span class="tick">🔒</span>
+          <div>
+            <strong>No Data Collected</strong>
+            <span>We don't collect names, emails, device IDs, or usage analytics.</span>
+          </div>
+        </li>
+        <li>
+          <span class="tick">📵</span>
+          <div>
+            <strong>No In-App Purchases</strong>
+            <span>Everything is included. No paywalls, no locked content.</span>
+          </div>
+        </li>
+        <li>
+          <span class="tick">📶</span>
+          <div>
+            <strong>Works Offline</strong>
+            <span>Download once and play anywhere — no Wi-Fi needed.</span>
+          </div>
+        </li>
+        <li>
+          <span class="tick">👶</span>
+          <div>
+            <strong>COPPA Friendly</strong>
+            <span>Designed to meet children's privacy standards. No accounts required.</span>
+          </div>
+        </li>
+        <li>
+          <span class="tick">📋</span>
+          <div>
+            <strong>Full Transparency</strong>
+            <span>Read our plain-English <a href="privacy.html" style="color:var(--orange);font-weight:800;">Privacy Policy</a> any time.</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- DOWNLOAD CTA -->
+  <section id="download" style="background:#F5FBFF;">
+    <div class="section-inner">
+      <div class="cta-banner">
+        <h2>Ready to start spelling?</h2>
+        <p>Download Wordy Birdy free today — no sign-up needed.</p>
+        <a class="btn-white" href="#">🍎 Download on the App Store</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-logo">Wordy <span>Birdy</span></span>
+    <p>A fun spelling adventure for little learners &nbsp;·&nbsp; Ages 3–7</p>
+    <p style="margin-top:0.5rem;">
+      <a href="privacy.html">Privacy Policy</a>
+      &nbsp;·&nbsp;
+      <a href="mailto:hello@wordybirdy.app">Contact</a>
+    </p>
+    <p style="margin-top:1rem; font-size:0.8rem;">© 2026 Wordy Birdy. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Wordy Birdy Privacy Policy — we collect no personal data. Simple and honest." />
+  <title>Privacy Policy — Wordy Birdy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:      #BFE3F5;
+      --blue-dark: #5BB8E8;
+      --orange:    #FF6B35;
+      --orange-lt: #FF8F60;
+      --white:     #FFFFFF;
+      --ink:       #1A1A2E;
+      --muted:     #5A6A7A;
+      --radius:    18px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: #F5FBFF;
+      color: var(--ink);
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 2px solid var(--blue);
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo .bird-icon { font-size: 1.8rem; line-height: 1; }
+
+    .nav-logo span {
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: var(--orange);
+      letter-spacing: -0.5px;
+    }
+
+    .nav-back {
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      color: var(--muted);
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .nav-back:hover { color: var(--orange); }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      background: linear-gradient(160deg, var(--blue) 0%, #E8F6FD 80%, #F5FBFF 100%);
+      padding: 4rem 1.5rem 3rem;
+      text-align: center;
+    }
+
+    .page-hero .badge {
+      display: inline-block;
+      background: var(--orange);
+      color: var(--white);
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 0.3rem 0.9rem;
+      border-radius: 50px;
+      margin-bottom: 1rem;
+    }
+
+    .page-hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 900;
+      margin-bottom: 0.5rem;
+    }
+
+    .page-hero p {
+      color: var(--muted);
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    /* ── SUMMARY BOX ── */
+    .summary-box {
+      max-width: 780px;
+      margin: 2.5rem auto 0;
+      background: var(--white);
+      border: 2px solid var(--blue);
+      border-radius: var(--radius);
+      padding: 1.8rem 2rem;
+    }
+
+    .summary-box h2 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin-bottom: 0.9rem;
+      color: var(--orange);
+    }
+
+    .summary-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.7rem;
+    }
+
+    .summary-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .summary-list .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--blue-dark);
+      flex-shrink: 0;
+    }
+
+    /* ── MAIN CONTENT ── */
+    .content-wrap {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+    }
+
+    .policy-section {
+      background: var(--white);
+      border: 2px solid var(--blue);
+      border-radius: var(--radius);
+      padding: 2rem 2rem;
+      margin-bottom: 1.5rem;
+      transition: border-color 0.2s;
+    }
+
+    .policy-section:hover { border-color: var(--blue-dark); }
+
+    .policy-section .section-num {
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.35rem;
+    }
+
+    .policy-section h2 {
+      font-size: 1.2rem;
+      font-weight: 900;
+      margin-bottom: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .policy-section p {
+      font-size: 0.96rem;
+      color: var(--muted);
+      margin-bottom: 0.7rem;
+    }
+
+    .policy-section p:last-child { margin-bottom: 0; }
+
+    .policy-section ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0.5rem 0 0.7rem;
+    }
+
+    .policy-section ul li {
+      font-size: 0.95rem;
+      color: var(--muted);
+      padding: 0.3rem 0 0.3rem 1.4rem;
+      position: relative;
+    }
+
+    .policy-section ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--blue-dark);
+      font-weight: 700;
+    }
+
+    .highlight-box {
+      background: linear-gradient(135deg, #FFF5F0 0%, #FFF8F5 100%);
+      border: 2px solid #FFB89A;
+      border-radius: 12px;
+      padding: 1rem 1.3rem;
+      margin: 0.8rem 0;
+      font-size: 0.93rem;
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .highlight-box span { color: var(--orange); font-weight: 800; }
+
+    a { color: var(--orange); font-weight: 700; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── CONTACT STRIP ── */
+    .contact-strip {
+      background: linear-gradient(135deg, var(--blue) 0%, #D9EEFA 100%);
+      border-radius: var(--radius);
+      padding: 2.2rem 2rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-strip h2 {
+      font-size: 1.3rem;
+      font-weight: 900;
+      margin-bottom: 0.4rem;
+    }
+
+    .contact-strip p { font-size: 0.95rem; color: var(--muted); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-size: 0.88rem;
+    }
+
+    footer a { color: var(--blue); font-weight: 700; }
+    footer a:hover { color: var(--orange); }
+    footer .footer-logo { font-size: 1.4rem; font-weight: 900; color: var(--white); display: block; margin-bottom: 0.4rem; }
+    footer .footer-logo span { color: var(--orange); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      nav { padding: 0 1rem; }
+      .page-hero { padding: 3rem 1rem 2rem; }
+      .summary-box { padding: 1.4rem 1.2rem; }
+      .content-wrap { padding: 2rem 1rem 4rem; }
+      .policy-section { padding: 1.5rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="index.html">
+      <span class="bird-icon">🐦</span>
+      <span>Wordy Birdy</span>
+    </a>
+    <a class="nav-back" href="index.html">← Back to Home</a>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <header class="page-hero">
+    <div class="badge">🔒 Your Privacy Matters</div>
+    <h1>Privacy Policy</h1>
+    <p>Last updated: July 4, 2026</p>
+
+    <div class="summary-box">
+      <h2>The short version:</h2>
+      <ul class="summary-list">
+        <li><span class="dot"></span>No personal data collected</li>
+        <li><span class="dot"></span>No ads or tracking</li>
+        <li><span class="dot"></span>No accounts needed</li>
+        <li><span class="dot"></span>No data ever sold</li>
+        <li><span class="dot"></span>Works fully offline</li>
+        <li><span class="dot"></span>COPPA compliant</li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- CONTENT -->
+  <main class="content-wrap">
+
+    <div class="policy-section">
+      <p class="section-num">Section 01</p>
+      <h2>🐤 Introduction</h2>
+      <p>
+        Wordy Birdy ("we", "our", or "us") is a children's spelling app designed for kids aged 3–7.
+        We are deeply committed to protecting the privacy of children and their families.
+      </p>
+      <p>
+        This Privacy Policy explains what information we collect (spoiler: almost none), how we
+        use it, and the rights you have as a parent or guardian. We've written it in plain English
+        because we believe you deserve honest, readable answers — not legal fog.
+      </p>
+    </div>
+
+    <div class="policy-section">
+      <p class="section-num">Section 02</p>
+      <h2>📋 Information We Collect</h2>
+      <div class="highlight-box">
+        <span>We collect no personal information from children.</span> Wordy Birdy does not ask for a name, email address, phone number, date of birth, or any other identifying information at any point.
+      </div>
+      <p>
+        The app does not require an account to use. There is no registration, no login, and no
+        profile of any kind. Your child simply opens the app and plays.
+      </p>
+      <p>
+        We do not collect:
+      </p>
+      <ul>
+        <li>Names, usernames, or email addresses</li>
+        <li>Location data (precise or approximate)</li>
+        <li>Device identifiers or advertising IDs</li>
+        <li>Photos, audio recordings, or microphone access</li>
+        <li>Contacts, camera, or any other sensitive device data</li>
+        <li>Usage analytics or behavioural tracking data</li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <p class="section-num">Section 03</p>
+      <h2>💾 Data Stored on Your Device</h2>
+      <p>
+        Wordy Birdy saves certain information <strong>locally on your device only</strong> to
+        make the app work and remember your child's progress. This includes:
+      </p>
+      <ul>
+        <li>Words and levels your child has completed</li>
+        <li>Stars and stickers your child has earned</li>
+        <li>App settings such as sound volume preferences</li>
+      </ul>
+      <p>
+        This data never leaves your device. It is not sent to our servers, not shared with any
+        third party, and is deleted when you uninstall the app.
+      </p>
+    </div>
+
+    <div class="policy-section">
+      <p class="section-num">Section 04</p>
+      <h2>📶 Offline Functionality</h2>
+      <p>
+        Wordy Birdy is designed to work entirely offline after the initial download. The app
+        does not make network requests during normal gameplay. This means your child's activity
+        inside the app cannot be tracked, logged, or transmitted to any server — because no
+        connection is made.
+      </p>
+    </div>
+
+    <div class="policy-section">
+      <p class="section-num">Section 05</p>
+      <h2>🚫 Advertising</h2>
+      <p>
+        Wordy Birdy contains <strong>no advertisements</strong> of any kind. We do not display
+        banner ads, video ads, interstitials, sponsored content, or any other form of advertising.
+      </p>
+      <p>
+        We do not use advertising networks, and no third-party advertising SDK is included in
+        the app. Your child will never be shown an ad while using Wordy Birdy.
+      </p>
+    </div>
+
+    <div class="policy-section">
+      <p class="section-num">Section 06</p>
+      <h2>🔗 Third-Party Services</h2>
+      <p>
+        We do not integrate any third-party analytics services (such as Google Analytics, Firebase
+        Analytics, Mixpanel, Amplitude, or similar). We do not use crash-reporting tools that
+        transmit identifiable device data.
+      </p>
+      <p>
+        Because the app works offline and collects no data, there is nothing to share with
+        third parties. We do not sell, rent, license, or otherwise disclose any information
+        about our users to anyone.
+      </p>
+    </div>
+
+    <div class="policy-section">
+      <p class="section-num">Section 07</p>
+      <h2>👶 Children's Privacy (COPPA)</h2>
+      <p>
+        Wordy Birdy is specifically designed for children under the age of 13. We fully comply
+        with the Children's Online Privacy Protection Act (COPPA) in the United States and
+        equivalent children's privacy laws in other jurisdictions.
+      </p>
+      <p>
+        In practice, our compliance is straightforward: <strong>we collect no personal information
+        from children at all</strong>, so there is no data to protect, share, or delete.
+      </p>
+      <p>
+        We do not condition a child's participation in any activity on providing more personal
+        information than is reasonably necessary for that activity.
+      </p>
+    </div>
+
+    <div class="policy-section">
+      <p class="section-num">Section 08</p>
+      <h2>👪 Parental Rights</h2>
+      <p>
+        As a parent or guardian, you have the right to:
+      </p>
+      <ul>
+        <li>Review any personal information we have about your child (there is none)</li>
+        <li>Request deletion of any data we hold (we hold none)</li>
+        <li>Refuse further collection or use of data (none is collected)</li>
+        <li>Ask us questions about our privacy practices at any time</li>
+      </ul>
+      <p>
+        To exercise any of these rights, or if you have any concerns, please contact us at
+        <a href="mailto:privacy@wordybirdy.app">privacy@wordybirdy.app</a>.
+        We will respond within 30 days.
+      </p>
+    </div>
+
+    <div class="policy-section">
+      <p class="section-num">Section 09</p>
+      <h2>🔐 Security</h2>
+      <p>
+        Because we do not collect or transmit personal data, the primary security risk of a
+        data breach simply does not apply to Wordy Birdy. The only data the app stores is
+        local game progress on your own device, protected by your device's own security model.
+      </p>
+      <p>
+        We encourage you to use a device screen lock and to keep your device's operating system
+        updated for general security best practices.
+      </p>
+    </div>
+
+    <div class="policy-section">
+      <p class="section-num">Section 10</p>
+      <h2>🌍 International Users</h2>
+      <p>
+        Wordy Birdy is available worldwide. Because we collect no personal data, the data
+        transfer and localisation requirements of laws such as the EU General Data Protection
+        Regulation (GDPR) and the UK GDPR are not triggered by our app.
+      </p>
+      <p>
+        If you are located in a jurisdiction with specific children's privacy laws, our
+        no-data-collection approach is designed to meet or exceed those requirements.
+      </p>
+    </div>
+
+    <div class="policy-section">
+      <p class="section-num">Section 11</p>
+      <h2>✏️ Changes to This Policy</h2>
+      <p>
+        If we ever update this Privacy Policy in a way that changes how we handle data, we
+        will update the "Last updated" date at the top of this page and, where appropriate,
+        notify users through the app or our website.
+      </p>
+      <p>
+        We encourage you to review this policy periodically. Any changes take effect when
+        the updated policy is posted on this page.
+      </p>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="contact-strip">
+      <h2>🐦 Questions? We're happy to help.</h2>
+      <p>
+        Reach our privacy team at
+        <a href="mailto:privacy@wordybirdy.app">privacy@wordybirdy.app</a>
+        — we aim to reply within 30 days.
+      </p>
+    </div>
+
+    <p style="text-align:center; font-size:0.85rem; color:var(--muted);">
+      <a href="index.html">← Back to Wordy Birdy home</a>
+    </p>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-logo">Wordy <span>Birdy</span></span>
+    <p>A fun spelling adventure for little learners &nbsp;·&nbsp; Ages 3–7</p>
+    <p style="margin-top:0.5rem;">
+      <a href="privacy.html">Privacy Policy</a>
+      &nbsp;·&nbsp;
+      <a href="mailto:hello@wordybirdy.app">Contact</a>
+    </p>
+    <p style="margin-top:1rem; font-size:0.8rem;">© 2026 Wordy Birdy. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
